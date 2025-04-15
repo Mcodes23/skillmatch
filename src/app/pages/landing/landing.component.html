@@ -1,0 +1,164 @@
+<!-- Header -->
+<header class="header">
+  <div class="container">
+    <div class="header-content">
+      <a href="/" class="logo">
+        <img src="assets/business.png" alt="SkillMatch Logo" />
+        <span>SkillMatch</span>
+      </a>
+      <nav class="nav-links">
+        <ul>
+          <li *ngFor="let link of navLinks">
+            <a [href]="link.path">{{ link.title }}</a>
+          </li>
+        </ul>
+      </nav>
+      <div class="auth-buttons">
+        <button [routerLink]="'/login'" class="btn btn-text">Sign In</button>
+        <button [routerLink]="'/signup'" class="btn btn-primary">
+          Sign Up
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>Revolutionizing Hiring with AI-Powered Skill Matching</h1>
+        <p>
+          Find the perfect job or candidate based on real skills, not just job
+          titles.
+        </p>
+        <div class="hero-buttons">
+          <button [routerLink]="'/signup'" class="btn btn-primary">
+            Get Started
+          </button>
+          <button [routerLink]="'/signup'" class="btn btn-outline">
+            Post a Job
+          </button>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="assets/hero-img.png" alt="SkillMatch in action" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="how-it-works" id="how-it-works">
+  <div class="container">
+    <h2 class="section-title">How It Works</h2>
+    <div class="steps-container">
+      <div class="step" *ngFor="let step of steps">
+        <div class="step-icon" [ngClass]="step.icon">
+          <i class="icon-{{ step.icon }}"></i>
+        </div>
+        <div class="step-number">{{ step.id }}</div>
+        <h3 class="step-title">{{ step.title }}</h3>
+        <p class="step-description">{{ step.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="features" id="features">
+  <div class="container">
+    <h2 class="section-title">Platform Features</h2>
+    <div class="features-grid">
+      <div class="feature-card" *ngFor="let feature of features">
+        <div class="feature-icon">
+          <i class="icon-{{ feature.icon }}"></i>
+        </div>
+        <h3 class="feature-title">{{ feature.title }}</h3>
+        <p class="feature-description">{{ feature.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <h2 class="section-title">What Our Users Say</h2>
+    <div class="testimonials-slider">
+      <div class="testimonial-card" *ngFor="let testimonial of testimonials">
+        <div class="testimonial-profile">
+          <img [src]="testimonial.image" [alt]="testimonial.name" />
+          <div class="profile-info">
+            <h3 class="profile-name">{{ testimonial.name }}</h3>
+            <p class="profile-position">{{ testimonial.position }}</p>
+          </div>
+        </div>
+        <div class="rating">
+          <span
+            *ngFor="let star of [1, 2, 3, 4, 5]"
+            class="star"
+            [ngClass]="{ filled: star <= testimonial.rating }"
+            >★</span
+          >
+        </div>
+        <p class="testimonial-quote">{{ testimonial.quote }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta">
+  <div class="container">
+    <h2 class="cta-title">Start Your AI-Powered Job Search Today!</h2>
+    <button [routerLink]="'/signup'" class="btn btn-primary btn-large">
+      Join Now
+    </button>
+  </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo">
+          <img src="assets/business.png" alt="SkillMatch Logo" />
+          <span>SkillMatch</span>
+        </div>
+        <p>
+          Revolutionizing the way people find their dream jobs through
+          AI-powered skill matching.
+        </p>
+      </div>
+      <div class="footer-links">
+        <div class="link-group">
+          <h3>Quick Links</h3>
+          <ul>
+            <li *ngFor="let link of quickLinks">
+              <a [href]="link.path">{{ link.title }}</a>
+            </li>
+          </ul>
+        </div>
+        <div class="link-group">
+          <h3>Connect With Us</h3>
+          <div class="social-links">
+            <a
+              *ngFor="let social of socialLinks"
+              [href]="social.url"
+              class="social-icon"
+            >
+              <i class="icon-{{ social.icon }}"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© {{ currentYear }} SkillMatch. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<router-outlet></router-outlet>

@@ -1,0 +1,209 @@
+<div class="pages-container">
+  <header class="header">
+    <div class="logo">
+      <img src="assets/business.png" alt="SkillMatch Logo" />
+      <span>SkillMatch</span>
+    </div>
+    <nav class="nav-links">
+      <a href="/job-seeker-dashboard">Dashboard</a>
+      <a href="/jobs-page">Jobs</a>
+      <a href="/job-seeker-profile">Profile</a>
+      <a href="/job-matches">Job Matches</a>
+    </nav>
+    <div class="user-actions">
+      <div class="avatar"></div>
+      <button (click)="logout()" class="logout-button">Logout</button>
+    </div>
+  </header>
+
+  <div class="search-container">
+    <input
+      type="text"
+      [(ngModel)]="searchQuery"
+      placeholder="Search for jobs..."
+      (keyup.enter)="search()"
+    />
+    <button class="search-button" (click)="search()">
+      <i class="fa fa-search"></i>
+    </button>
+  </div>
+
+  <div class="job-detail-container">
+    <div class="breadcrumbs">
+      <span *ngFor="let crumb of breadcrumbs; let last = last">
+        <a [routerLink]="crumb.path" *ngIf="!last">{{ crumb.title }}</a>
+        <span *ngIf="!last"> / </span>
+        <span *ngIf="last">{{ crumb.title }}</span>
+      </span>
+    </div>
+
+    <div class="job-header">
+      <div class="company-logo">
+        <div class="logo-container">
+          <span>Tc</span>
+        </div>
+      </div>
+
+      <div class="job-title-container">
+        <h1>{{ job.title }}</h1>
+        <div class="company-info">
+          <span class="company-name">
+            <i class="fa fa-building"></i> {{ job.company }}
+          </span>
+          <span class="job-location">
+            <i class="fa fa-map-marker-alt"></i> {{ job.location }}
+          </span>
+        </div>
+        <div class="job-meta">
+          <span class="job-type">
+            <i class="fa fa-briefcase"></i> {{ job.employmentType }}
+          </span>
+          <span class="job-salary">
+            <i class="fa fa-money-bill-wave"></i> {{ job.salary }}
+          </span>
+          <span class="job-posted">
+            <i class="fa fa-calendar-alt"></i> Posted {{ job.postedDate }}
+          </span>
+        </div>
+      </div>
+
+      <div class="job-actions">
+        <button class="save-button" (click)="saveJob()">
+          <i class="fa fa-bookmark"></i>
+        </button>
+        <button class="share-button" (click)="shareJob()">
+          <i class="fa fa-share-alt"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="job-content">
+      <section class="job-description">
+        <h2>About the Role</h2>
+        <p>{{ job.description }}</p>
+      </section>
+
+      <section class="job-responsibilities">
+        <h2>Key Responsibilities</h2>
+        <ul>
+          <li *ngFor="let responsibility of job.responsibilities">
+            {{ responsibility }}
+          </li>
+        </ul>
+      </section>
+
+      <section class="job-benefits">
+        <h2>Benefits</h2>
+        <div class="benefits-grid">
+          <div class="benefit-item" *ngFor="let benefit of job.benefits">
+            <div class="benefit-icon">
+              <i class="fa-solid {{ benefit.iconClass }}"></i>
+            </div>
+            <div class="benefit-name">{{ benefit.name }}</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- <app-skill-match [skillMatch]="job.skillMatch"></app-skill-match> -->
+
+      <section class="apply-section">
+        <h2>Apply for this position</h2>
+        <p>Choose how you want to submit your application</p>
+
+        <div class="application-options">
+          <div class="application-option">
+            <div class="option-icon">
+              <i class="fa fa-file-upload"></i>
+            </div>
+            <div class="upload-box">
+              <p>Drag and drop your CV here</p>
+              <label for="cv-upload" class="browse-label">Browse Files</label>
+              <input
+                type="file"
+                id="cv-upload"
+                class="browse-button"
+                (change)="onFileSelected($event)"
+                accept=".pdf,.doc,.docx"
+                hidden
+              />
+            </div>
+          </div>
+
+          <div class="application-option">
+            <div class="option-icon">
+              <i class="fa fa-robot"></i>
+            </div>
+            <div class="option-content">
+              <h3>Use AI-Enhanced Profile</h3>
+              <p>Optimized for better matching</p>
+            </div>
+          </div>
+
+          <div class="application-option">
+            <div class="option-icon">
+              <i class="fa fa-linkedin"></i>
+            </div>
+            <div class="option-content">
+              <h3>Import from LinkedIn</h3>
+            </div>
+          </div>
+
+          <div class="application-option">
+            <div class="option-icon">
+              <i class="fa fa-github"></i>
+            </div>
+            <div class="option-content">
+              <h3>Connect GitHub Profile</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="apply-button-container">
+          <button class="apply-button" (click)="applyNow()">Apply Now</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo">
+          <img src="assets/business.png" alt="SkillMatch Logo" />
+          <span>SkillMatch</span>
+        </div>
+        <p>
+          Revolutionizing the way people find their dream jobs through
+          AI-powered skill matching.
+        </p>
+      </div>
+      <div class="footer-links">
+        <div class="link-group">
+          <h3>Quick Links</h3>
+          <ul>
+            <li *ngFor="let link of quickLinks">
+              <a [href]="link.path">{{ link.title }}</a>
+            </li>
+          </ul>
+        </div>
+        <div class="link-group">
+          <h3>Connect With Us</h3>
+          <div class="social-links">
+            <a
+              *ngFor="let social of socialLinks"
+              [href]="social.url"
+              class="social-icon"
+            >
+              <i class="icon-{{ social.icon }}"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© {{ currentYear }} SkillMatch. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<router-outlet></router-outlet>

@@ -1,0 +1,253 @@
+body {
+  color: #333;
+}
+
+/* Container */
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch; /* Changed from center to stretch */
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Form Box */
+.signup-form-container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px 0 0 10px;
+  box-shadow: -6px 0 16px rgba(0, 0, 0, 0.1);
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Right Container */
+.right-container {
+  background-color: #4263eb;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 10px 10px 0;
+  box-shadow: 6px 0 16px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+.signup-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-bottom: 1.2rem;
+}
+
+.signup-image img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+/* Header */
+.signup-header {
+  text-align: start;
+  margin-bottom: 1.5rem;
+}
+
+.signup-header .logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+}
+
+.signup-header .logo img {
+  height: 1.8rem;
+  margin-right: 0.5rem;
+}
+
+.signup-header .logo span {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #4263eb;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 0.8rem;
+}
+
+.create-account-title {
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+  color: #222;
+}
+
+/* Form Styles */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+}
+
+input {
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  transition: border 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #4263eb;
+}
+
+/* Password Toggle */
+.password-input-container {
+  position: relative;
+}
+
+.password-input-container input {
+  width: 100%;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.eye-icon svg {
+  display: block;
+  fill: #666;
+}
+
+/* Validation */
+.invalid {
+  border-color: #e74c3c !important;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+}
+
+.user-type-options {
+  display: flex;
+  gap: 20px;
+}
+
+/* Terms Checkbox */
+.terms-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* Submit Button */
+button[type="submit"] {
+  background-color: #4263eb;
+  color: white;
+  padding: 0.7rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #3551c9;
+}
+.login-link {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.login-link a {
+  color: #4263eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+.right-content {
+  text-align: center;
+}
+.right-content h3 {
+  color: white;
+  font-size: 1rem;
+  margin: 1rem auto;
+}
+.right-content p {
+  color: #e1e0e0;
+  font-size: 0.8rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .signup-container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .signup-form-container {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    padding: 1.5rem;
+  }
+
+  .right-container {
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    padding: 1rem;
+    min-height: 250px; /* Ensure minimum height on mobile */
+  }
+
+  .signup-image img {
+    max-height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-form-container {
+    padding: 1.25rem;
+  }
+
+  .create-account-title {
+    font-size: 1.3rem;
+  }
+
+  .signup-form {
+    gap: 1.2rem;
+  }
+}
