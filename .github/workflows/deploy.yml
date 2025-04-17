@@ -1,4 +1,4 @@
-name: Build Angular App
+name: Build and Deploy Angular App to Vercel
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,16 +16,19 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: '18'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Build Angular app
-        run: ng build --configuration=production
+      - name: Build Angular App
+        run: npm run build --configuration=production
 
-      - name: Upload dist folder (optional)
-        uses: actions/upload-artifact@v3
-        with:
-          name: build
-          path: dist/
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Deploy to Vercel
+        run: vercel --prod --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
