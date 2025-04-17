@@ -1,3 +1,19 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "version": 3,
+  "builds": [
+    {
+      "src": "dist/skillmatch/server/server.mjs",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "dist/skillmatch/browser/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/skillmatch/server/server.mjs"
+    }
+  ]
 }
