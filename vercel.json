@@ -1,8 +1,8 @@
 {
-  "version": 3,
+  "version": 2,
   "builds": [
     {
-      "src": "dist/skillmatch/server/server.mjs",
+      "src": "dist/skillmatch/server.js",
       "use": "@vercel/node"
     },
     {
@@ -13,7 +13,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "dist/skillmatch/server/server.mjs"
+      "dest": "dist/skillmatch/server.js"
     }
   ]
 }
